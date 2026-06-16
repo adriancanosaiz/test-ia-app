@@ -1,0 +1,32 @@
+services:
+  db:
+    image: ankane/pgvector:latest
+    container_name: testforge-db
+    environment:
+      POSTGRES_USER: testforge
+      POSTGRES_PASSWORD: testforge
+      POSTGRES_DB: testforge
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testforge -d testforge"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ollama:
+    image: ollama/ollama
+    container_name: testforge-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # Nota: en macOS Docker Desktop no expone GPU fácilmente.
+    # Para mejor rendimiento, instala Ollama nativamente y usa
+    # OLLAMA_BASE_URL=http://host.docker.internal:11434
+
+volumes:
+  postgres_data:
+  ollama_data:

@@ -1,0 +1,9 @@
+{
+  "title": "Bienvenido a TestForge",
+  "description": "Vamos a configurar tu entorno de IA para empezar a generar tests.",
+  "recommendedModel": "Modelo recomendado",
+  "downloadModel": "Descargar modelo",
+  "skip": "Omitir por ahora",
+  "finish": "Finalizar configuración",
+  "setupDescription": "Para empezar, elige un modelo de IA que se instalará localmente con Ollama. Podrás cambiarlo más tarde desde Configuración."
+}
